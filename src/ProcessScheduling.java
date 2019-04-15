@@ -128,10 +128,14 @@ public class ProcessScheduling {
             }
         }
 
-        if (running && currentTime.equals(endTime)){
-            running = false;
-            System.out.println("Process " + runningProcess.getId() +
-                    " finished at time " + currentTime);
+        while (running){
+            if (currentTime.equals(endTime)){
+                running = false;
+                System.out.println("Process " + runningProcess.getId() +
+                        " finished at time " + currentTime);
+                executionCount++;
+            }
+            currentTime++;
         }
 
         System.out.println("\nTotal wait time = " + totalWaitTime);
